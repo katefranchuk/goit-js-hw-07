@@ -37,8 +37,6 @@ function onGalleryItemClick(event) {
   const src = event.target.dataset.source;
 
   onModalOpen(src);
-
-  
 }
 
 function onModalOpen(source) {
