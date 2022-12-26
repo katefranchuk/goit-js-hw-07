@@ -6,23 +6,24 @@ function createGalleryItemsMarkup(items) {
   return items
     .map(({ preview, original, description }) => {
       return `
-        
-          <a class="gallery__item" href="${original}">
+        <li class="gallery__item">
+          <a href="${original}">
             <img class="gallery__image" src="${preview}" alt="${description}" " />
           </a>
+        </li>
+
         
     `;
     })
     .join('');
 }
 
-
 galleryContainerEl.insertAdjacentHTML('beforeend', createGalleryItemsMarkup(galleryItems));
 
 galleryContainerEl.addEventListener('click', onGalleryItemClick);
 
 function onGalleryItemClick(event) {
-   event.preventDefault();
+  event.preventDefault();
 }
 
 let gallery = new SimpleLightbox('.gallery a', {

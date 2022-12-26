@@ -39,11 +39,16 @@ function onGalleryItemClick(event) {
   onModalOpen(src);
 }
 
+let instance = null;
+
 function onModalOpen(source) {
-  const instance = basicLightbox.create(`<img src="${source}">`);
+  instance = basicLightbox.create(`<img src="${source}">`, {
+    onShow: () => document.addEventListener('keydown', onEscKeyBtnPress),
+    onClose: () => document.removeEventListener('keydown', onEscKeyBtnPress),
+  });
   instance.show();
 
-  document.addEventListener('keydown', onEscKeyBtnPress);
+  
 }
 
 
@@ -51,4 +56,5 @@ function onEscKeyBtnPress(event) {
   if (event.code === 'Escape') {
     instance.close();
   }
+  console.log('hi');
 }
